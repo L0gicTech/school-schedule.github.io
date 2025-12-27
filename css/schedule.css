@@ -1,0 +1,417 @@
+ /* schedule.css - Стили для страницы создания расписания */
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+}
+
+.page-subtitle {
+    color: #64748b;
+    font-size: 1.125rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Выбор дня недели */
+.day-selection {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.day-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.day-btn {
+    padding: 16px;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.day-btn:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+}
+
+.day-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Область расписания */
+.schedule-area {
+    margin: 40px 0;
+}
+
+.area-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+#selectedDayTitle {
+    color: #4f46e5;
+    margin-bottom: 10px;
+}
+
+.area-subtitle {
+    color: #64748b;
+    font-size: 1.125rem;
+}
+
+/* Контейнер классов */
+.classes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Карточка класса */
+.class-table-wrapper {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s ease;
+    position: relative;
+    animation: slideIn 0.4s ease-out;
+}
+
+.class-table-wrapper:hover {
+    border-color: #4f46e5;
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+}
+
+.class-table-wrapper:nth-child(2) { animation-delay: 0.1s; }
+.class-table-wrapper:nth-child(3) { animation-delay: 0.2s; }
+.class-table-wrapper:nth-child(4) { animation-delay: 0.3s; }
+
+.class-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.class-input {
+    flex: 1;
+    max-width: 200px;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    background: #f8fafc;
+    transition: all 0.3s ease;
+}
+
+.class-input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.delete-class-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-left: 15px;
+}
+
+.delete-class-btn:hover {
+    background: #dc2626;
+    transform: scale(1.1);
+}
+
+/* Таблица уроков */
+.schedule-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 20px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.schedule-table th {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    color: #475569;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.schedule-table th:first-child {
+    width: 80px;
+    text-align: center;
+}
+
+.schedule-table th:nth-child(2) {
+    width: 60%;
+}
+
+.schedule-table th:last-child {
+    width: 40%;
+}
+
+.schedule-table td {
+    padding: 16px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #475569;
+}
+
+.schedule-table td:first-child {
+    text-align: center;
+    font-weight: 600;
+    color: #4f46e5;
+    background: #f8fafc;
+}
+
+.schedule-table tr:last-child td {
+    border-bottom: none;
+}
+
+.schedule-table tr:hover td {
+    background: #f8fafc;
+}
+
+/* Стили для предметов и кабинетов в таблице */
+.subject-filled {
+    background: #e8f5e9 !important;
+    border-color: #4caf50 !important;
+    color: #2e7d32 !important;
+}
+
+.classroom-filled {
+    background: #e3f2fd !important;
+    border-color: #2196f3 !important;
+    color: #1565c0 !important;
+}
+
+.subject-skip {
+    background-color: #e3f2fd !important;
+    color: #1976d2 !important;
+    border-color: #90caf9 !important;
+}
+
+.has-conflict {
+    background-color: #fff0f0 !important;
+}
+
+.has-conflict td {
+    border-color: #ff6b6b !important;
+}
+
+.highlight-conflict {
+    animation: pulse-conflict 1.5s infinite;
+}
+
+@keyframes pulse-conflict {
+    0% { background-color: #fff0f0; }
+    50% { background-color: #ffcccc; }
+    100% { background-color: #fff0f0; }
+}
+
+.conflict-badge {
+    margin-left: 5px;
+    color: #ff6b6b;
+    cursor: help;
+}
+
+/* Конфликт информация */
+.conflict-info {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.conflict-info p {
+    margin: 5px 0;
+}
+
+.dialog-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Кнопка удаления урока */
+.delete-lesson-btn {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    cursor: pointer;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.delete-lesson-btn:hover {
+    background-color: #ffebee;
+}
+
+/* Ячейка с кабинетами */
+.classroom-cell {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.classroom-count {
+    background: #2196F3;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Демо таблица */
+.demo-schedule {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.demo-header {
+    color: #4f46e5;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.demo-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.demo-table th {
+    background: #f1f5f9;
+    padding: 10px;
+    text-align: left;
+    font-weight: 600;
+    color: #475569;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.demo-table td {
+    padding: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #64748b;
+}
+
+.demo-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Адаптивность для страницы расписания */
+@media (max-width: 992px) {
+    .day-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .schedule-table th:nth-child(2),
+    .schedule-table th:last-child {
+        width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        margin-bottom: 30px;
+        padding: 20px 0;
+    }
+
+    .day-selection {
+        padding: 20px;
+    }
+
+    .day-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .class-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .class-input {
+        max-width: 100%;
+    }
+
+    .schedule-table {
+        font-size: 14px;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+        padding: 12px 8px;
+    }
+
+    .schedule-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .class-table-wrapper {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .day-buttons {
+        grid-template-columns: 1fr;
+    }
+}
